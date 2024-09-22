@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:form="http://www.w3.org/1999/xhtml">
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #user-table{
+      width: max-content;
+      margin: auto;
+      text-align: center;
+    }
+    #add-user{
+      margin-top: 20px;
+      width: 200px;
+      height: 50px;
+      font-size: 18px;
+    }
+    table {
+      width: 500px;
+      border: 2px solid black;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 4px;
+      text-align: center;
+      border: 2px solid black;
+      border-collapse: collapse;
+    }
+    .flex-content{
+      display: flex;
+      justify-content: space-around;
+    }
+
+  </style>
+  <title></title>
+</head>
+<body>
+<div id="user-table">
+  <h1>Users</h1>
+
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Age</th>
+      <th>Action</th>
+    </tr>
+    <tr  th:each="user : ${users}">
+      <td th:text="${user.id}"/>
+      <td th:text="${user.name}"/>
+      <td th:text="${user.surname}"/>
+      <td th:text="${user.age}"/>
+      <td>
+        <div class="flex-content">
+          <form method="post"><button type="submit" name="deleteUser" th:value="${user.id}">delete</button></form>
+          <form method="get"><button type="submit" name="updateUserForm" th:value="${user.id}">update</button></form>
+        </div>
+      </td>
+
+    </tr>
+  </table>
+
+  <form  method="get">
+    <button type="submit" id="add-user" name="addUserForm">Add user</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <html lang="en">
 <head>
@@ -56,17 +55,18 @@
       <td th:text="${user.age}"/>
       <td>
         <div class="flex-content">
-          <form method="post"><button type="submit" name="deleteUser" th:value="${user.id}">delete</button></form>
-          <form method="get"><button type="submit" name="updateUserForm" th:value="${user.id}">update</button></form>
+          <form method="post" th:action="'/users/delete/'+${user.id}"><button type="submit">delete</button></form>
+          <form method="get"  th:action="'/users/update/'+${user.id}"><button type="submit">update</button></form>
         </div>
       </td>
 
     </tr>
   </table>
 
-  <form  method="get">
-    <button type="submit" id="add-user" name="addUserForm">Add user</button>
+  <form  method="get" action="/users/create">
+    <button type="submit" id="add-user">Add user</button>
   </form>
+
 </div>
 </body>
 </html>
